@@ -248,7 +248,7 @@ canvas { display: block; width: 100%; height: auto; }
   /* show menu button */
   .menu-toggle { display: inline-grid; }
   /* dropdown nav */
-  .nav-links { position: absolute; top: 100%; left: 0; right: 0; display: grid; background: color-mix(in oklab, var(--bg), transparent 55%); border-bottom: 1px solid var(--card-border); transform-origin: top; transform: scaleY(0); transition: transform .25s var(--ease); padding: 10px; gap: 8px; }
+  .nav-links { position: absolute; top: calc(100% + 8px); left: 12px; right: 12px; display: grid; background: color-mix(in oklab, var(--bg), transparent 55%); border-bottom: 1px solid var(--card-border); transform-origin: top; transform: scaleY(0); transition: transform .25s var(--ease); padding: 10px; gap: 8px; }
   .nav-links a, .nav-links .btn, .nav-links .theme-toggle { margin-left: 0; }
   .nav-links .btn { width: 100%; }
   .nav-open .nav-links { transform: scaleY(1); }
