@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gurujika Robot — Automate Your Telegram Groups with AI & Crypto Precision</title>
+  <meta name="description" content="Futuristic Telegram automation for group management, subscriptions, crypto payments, and analytics. Try @Groupsub_bot now." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop stop-color='%2315ffef'/><stop offset='1' stop-color='%238a2be2'/></linearGradient></defs><circle cx='50' cy='50' r='45' fill='url(%23g)'/></svg>">
+</head>
+<body>
+  <canvas id="bg-grid" aria-hidden="true"></canvas>
+  <header class="nav">
+    <div class="container nav-inner">
+      <button id="menuToggle" class="menu-toggle" aria-label="Open menu" aria-controls="siteNav" aria-expanded="false">
+        <span class="menu-icon" aria-hidden="true">
+          <!-- hamburger -->
+          <svg class="icon-bars" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+          <!-- close -->
+          <svg class="icon-x" viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round">
+            <path d="M6 6l12 12M18 6l-12 12"/>
+          </svg>
+        </span>
+      </button>
+      <div class="brand">
+        <span class="logo-orb"></span>
+        <span class="brand-name">Gurujika Robot</span>
+      </div>
+      <nav id="siteNav" class="nav-links">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Plans</a>
+        <a href="#how">How It Works</a>
+        <a href="#testimonials">Community</a>
+        <a class="btn neon" href="https://t.me/Groupsub_bot" target="_blank" rel="noopener">Join Bot</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme" role="switch" aria-checked="false">
+          <span class="toggle-track">
+            <span class="thumb"></span>
+            <span class="icon sun" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+              </svg>
+            </span>
+            <span class="icon moon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </span>
+          </span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="section hero">
+      <div class="container hero-inner">
+        <div class="hero-copy reveal">
+          <h1>Register • Select Plan • Get Trade Calls</h1>
+          <p class="subtitle">Gurujika Robot handles registration, auto-assigns members to the right plan groups, and delivers timely trade calls — with crypto payments and analytics out of the box.</p>
+          <div class="cta">
+            <a class="btn primary" href="https://t.me/Groupsub_bot" target="_blank" rel="noopener">Join Bot</a>
+            <a class="btn ghost" href="#pricing">View Plans</a>
+          </div>
+          <ul class="badges">
+            <li>Instant signup</li>
+            <li>Auto group assignment</li>
+            <li>Daily trade calls</li>
+          </ul>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="qr-card glass glow">
+            <div class="qr-header">Scan QR to Start</div>
+            <img class="qr-img" alt="QR to join @Groupsub_bot" src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Ft.me%2FGroupsub_bot" width="220" height="220" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" />
+            <a class="qr-link" href="https://t.me/Groupsub_bot" target="_blank" rel="noopener">t.me/Groupsub_bot</a>
+          </div>
+          <div class="charts">
+            <canvas id="lineChart" width="380" height="180" aria-label="animated line chart" role="img"></canvas>
+            <canvas id="candleChart" width="380" height="180" aria-label="animated candlestick chart" role="img"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KPI Stats Strip -->
+    <section class="section" aria-label="key performance stats">
+      <div class="container">
+        <div class="kpis grid">
+          <div class="kpi glass reveal">
+            <div class="kpi-value">&lt;1m</div>
+            <div class="kpi-label">Avg onboarding</div>
+          </div>
+          <div class="kpi glass reveal">
+            <div class="kpi-value">10K+</div>
+            <div class="kpi-label">Members onboarded</div>
+          </div>
+          <div class="kpi glass reveal">
+            <div class="kpi-value">99.9%</div>
+            <div class="kpi-label">Uptime</div>
+          </div>
+          <div class="kpi glass reveal">
+            <div class="kpi-value"><span class="grad">Pro</span></div>
+            <div class="kpi-label">Signal delivery</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div class="container narrow reveal">
+        <h2 class="section-title">About the Bot</h2>
+        <p>Built for trading communities, Gurujika Robot registers users, routes them into the right plan groups (Starter/Advance/Elite), and pushes trade calls in real time. Accept crypto, track conversions, and keep groups clean — automatically.</p>
+      </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section id="features" class="section">
+      <div class="container">
+        <h2 class="section-title">Power Features</h2>
+        <div class="grid features-grid">
+          <div class="card glass reveal">
+            <div class="icon i-automation"></div>
+            <h3>Registration</h3>
+            <p>Simple registration flow to get members in quickly and keep access organized.</p>
+          </div>
+          <div class="card glass reveal">
+            <div class="icon i-management"></div>
+            <h3>Auto Group Assignment</h3>
+            <p>Members are routed to the correct plan groups instantly — Starter, Advance, or Elite.</p>
+          </div>
+          <div class="card glass reveal">
+            <div class="icon i-subscriptions"></div>
+            <h3>Trade Call Delivery</h3>
+            <p>Broadcast curated trade calls with role-filtering and delivery analytics.</p>
+          </div>
+          <div class="card glass reveal">
+            <div class="icon i-payments"></div>
+            <h3>USDT Payments</h3>
+            <p>USDT only. Fast confirmations and seamless renewals.</p>
+          </div>
+          <div class="card glass reveal">
+            <div class="icon i-analytics"></div>
+            <h3>Analytics</h3>
+            <p>Monitor signups, plan uptake, group growth and signal engagement.</p>
+          </div>
+          <div class="card glass reveal">
+            <div class="icon i-security"></div>
+            <h3>Security</h3>
+            <p>Signed links, anti-forwarding, and role-based controls for peace of mind.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <h2 class="section-title">Plans</h2>
+        <div class="grid pricing-grid">
+          <div class="card price glass reveal">
+            <div class="plan">Starter</div>
+            <div class="price-tag">
+              <span class="value">10</span>
+              <span class="unit">Points (1000 Pips)</span>
+            </div>
+            <ul class="features-list">
+              <li>For small groups</li>
+              <li>Basic automation</li>
+              <li>USDT checkout</li>
+            </ul>
+            <a class="btn outline" href="https://t.me/Groupsub_bot" target="_blank" rel="noopener">Choose Starter</a>
+          </div>
+          <div class="card price glass highlight reveal">
+            <div class="plan">Advance</div>
+            <div class="price-tag">
+              <span class="value">50</span>
+              <span class="unit">Points (5000 Pips)</span>
+            </div>
+            <ul class="features-list">
+              <li>Growing communities</li>
+              <li>Advanced automation</li>
+              <li>Priority support</li>
+            </ul>
+            <a class="btn primary" href="https://t.me/Groupsub_bot" target="_blank" rel="noopener">Choose Advance</a>
+          </div>
+          <div class="card price glass glow-border reveal">
+            <div class="plan">Elite</div>
+            <div class="price-tag">
+              <span class="value">100</span>
+              <span class="unit">Points (10000 Pips)</span>
+            </div>
+            <ul class="features-list">
+              <li>Professional groups</li>
+              <li>Full automation suite</li>
+              <li>Dedicated success manager</li>
+            </ul>
+            <a class="btn neon" href="https://t.me/Groupsub_bot" target="_blank" rel="noopener">Choose Elite</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how" class="section">
+      <div class="container narrow">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps">
+          <div class="step glass reveal">
+            <div class="step-index">1</div>
+            <h3>Register</h3>
+            <p>Start on <a href="https://t.me/Groupsub_bot" target="_blank" rel="noopener">@Groupsub_bot</a> and create your profile.</p>
+          </div>
+          <div class="step glass reveal">
+            <div class="step-index">2</div>
+            <h3>Select Plan</h3>
+            <p>Choose Starter, Advance, or Elite. Pay in USDT and unlock access instantly.</p>
+          </div>
+          <div class="step glass reveal">
+            <div class="step-index">3</div>
+            <h3>Auto-Join Plan Group</h3>
+            <p>Get routed to Starter/Advance/Elite automatically after payment.</p>
+          </div>
+          <div class="step glass reveal">
+            <div class="step-index">4</div>
+            <h3>Receive Trade Calls</h3>
+            <p>Timely signals delivered in your group with clear entry/exit targets.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Proof & Trade Previews -->
+    <section id="testimonials" class="section">
+      <div class="container">
+        <h2 class="section-title">Community Proof</h2>
+        <div class="kpis grid proof-kpis">
+          <div class="kpi glass reveal"><div class="kpi-value">5K+</div><div class="kpi-label">Signals sent</div></div>
+          <div class="kpi glass reveal"><div class="kpi-value">85%</div><div class="kpi-label">Avg win ratio*</div></div>
+          <div class="kpi glass reveal"><div class="kpi-value"><span class="grad">ms</span></div><div class="kpi-label">Low-latency delivery</div></div>
+        </div>
+
+        <div class="grid testimonials-grid">
+          <div class="testimonial glass reveal">
+            <div class="avatar">AM</div>
+            <div class="testimonial-meta">
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <span class="platform-badge" aria-label="Telegram">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M9.04 15.29 8.9 18.4c.3 0 .43-.13.59-.29l1.41-1.35 2.92 2.14c.54.3.93.14 1.08-.5l1.96-9.2c.18-.86-.31-1.2-.87-.99L4.9 10.22c-.84.33-.83.8-.14 1.01l3.16.99 7.34-4.64c.34-.21.65-.1.4.11"/></svg>
+                Telegram
+              </span>
+            </div>
+            <p>“gurujikarobot made everything simple — register, pick a plan, and the calls arrived right in our group with clear targets.”</p>
+            <span class="name">— A.M., Verified trader</span>
+          </div>
+          <div class="testimonial glass reveal">
+            <div class="avatar">KR</div>
+            <div class="testimonial-meta">
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <span class="platform-badge" aria-label="Telegram">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M9.04 15.29 8.9 18.4c.3 0 .43-.13.59-.29l1.41-1.35 2.92 2.14c.54.3.93.14 1.08-.5l1.96-9.2c.18-.86-.31-1.2-.87-.99L4.9 10.22c-.84.33-.83.8-.14 1.01l3.16.99 7.34-4.64c.34-.21.65-.1.4.11"/></svg>
+                Telegram
+              </span>
+            </div>
+            <p>“Our onboarding is finally streamlined. Members get auto‑assigned to the correct group and the trade calls are consistent and timely.”</p>
+            <span class="name">— K.R., Verified trader</span>
+          </div>
+          <div class="testimonial glass reveal">
+            <div class="avatar">SP</div>
+            <div class="testimonial-meta">
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <span class="platform-badge" aria-label="Telegram">
+                <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M9.04 15.29 8.9 18.4c.3 0 .43-.13.59-.29l1.41-1.35 2.92 2.14c.54.3.93.14 1.08-.5l1.96-9.2c.18-.86-.31-1.2-.87-.99L4.9 10.22c-.84.33-.83.8-.14 1.01l3.16.99 7.34-4.64c.34-.21.65-.1.4.11"/></svg>
+                Telegram
+              </span>
+            </div>
+            <p>“Excellent calls and an easy process from payment to access. The bot just works — no manual work for admins.”</p>
+            <span class="name">— S.P., Swing trader</span>
+          </div>
+        </div>
+        <p class="disclaimer muted">*Community-reported performance. Not financial advice. Markets involve risk.</p>
+      </div>
+    </section>
+    <!-- Sticky mobile CTA -->
+    <div class="mobile-cta" role="region" aria-label="Quick action">
+      <a class="btn neon" href="https://t.me/Groupsub_bot" target="_blank" rel="noopener">Join Bot</a>
+      <a class="btn ghost" href="#pricing">View Plans</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <div class="brand">
+          <span class="logo-orb"></span>
+          <strong>Gurujika Robot</strong>
+        </div>
+        <p class="muted small">Accepted currency: USDT only</p>
+      </div>
+      <nav class="links">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Plans</a>
+        <a href="#how">How It Works</a>
+        <a href="https://t.me/Groupsub_bot" target="_blank" rel="noopener">Telegram</a>
+      </nav>
+      <div class="contact">
+        <a class="btn outline" href="mailto:info@gurujikarobot.com">info@gurujikarobot.com</a>
+        <div class="coins">
+          <span class="pill">USDT</span>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-legal">
+      <div class="copyright">© <span id="year"></span> gurujikarobot.com • Built for the modern trading community</div>
+      <div class="legal-links">
+        <a href="#" aria-disabled="true">Privacy</a>
+        <span aria-hidden="true">•</span>
+        <a href="#" aria-disabled="true">Terms</a>
+        <span aria-hidden="true">•</span>
+        <a href="#hero" class="back-to-top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
